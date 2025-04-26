@@ -1,7 +1,14 @@
 // publicmodule is a package containing some utilities functions
 package publicmodule
 
-// Add is function which adds two integers
-func Add(a, b int) int {
+import "golang.org/x/exp/constraints"
+
+// Number is an interface which defines type contraints
+type Number interface {
+	constraints.Float | constraints.Integer
+}
+
+// Add is generic function which adds two floats or integers
+func Add[T Number](a, b T) T {
 	return a + b
 }
